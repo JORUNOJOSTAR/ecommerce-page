@@ -13,7 +13,7 @@
     <div class="py-navbar-item">
       <a href="/"> Logo </a>
     </div>
-    <div class="block fixed top-0 left-0 bottom-0 shadow-2xl w-[220px] bg-slate-900 md:hidden transition-all">
+    <div class="block fixed top-0 left-[-220px] bottom-0 shadow-2xl w-[220px] bg-slate-900 md:hidden transition-all">
       <ul>
         <li>
           <a href="/src/index.html" class="flex items-center py-2 px-navbar-item transition-all hover:bg-slate-700">
@@ -106,7 +106,8 @@
           </a>
         </li>
         <li class="px-3">
-          <a href="/src/signup.html" class="flex items-center py-2 px-3 rounded transition-colors btn-emerald">
+          <a href="/src/signup.html"
+            class="flex items-center py-2 px-3 rounded transition-colors bg-emerald-500 hover:bg-emerald-600">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-6 h-6 mr-2">
               <path stroke-linecap="round" stroke-linejoin="round"
@@ -214,7 +215,8 @@
           </a>
         </li>
         <li>
-          <a href="/src/signup.html" class="flex items-center py-2 px-3 rounded transition-colors btn-emerald ml-4">
+          <a href="/src/signup.html"
+            class="flex items-center py-2 px-3 rounded transition-colors bg-emerald-500 hover:bg-emerald-600 ml-4">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-6 h-6 mr-2">
               <path stroke-linecap="round" stroke-linejoin="round"
@@ -236,7 +238,7 @@
   <div class="container lg:w-2/3 mx-auto p-5 ">
 
     <h1 class="text-3xl font-bold m-2">My Orders</h1>
-    <div class="bg-white rounded-lg p-3">
+    <div class="bg-white rounded-lg p-3 overflow-x-auto">
       <table class="table-auto w-full">
         <thead>
           <tr class="border-b-2">
