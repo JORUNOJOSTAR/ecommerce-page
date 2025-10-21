@@ -3,12 +3,12 @@
         <!-- Product item -->
         <div
             class="bg-white  rounded-md shadow border border-gray-300 hover:border-purple-600 transition-colors overflow-hidden">
-            <RouterLink to="/src/product.html">
+            <RouterLink :to="{name:'product'}">
                 <img src="/src/img/1_1.jpg" alt="" class="rounded-t-md hover:scale-105 transition hover:rotate-1">
             </RouterLink>
             <div class="p-3">
                 <h3>
-                    <RouterLink to="/src/product.html" class="hover:text-gray-800 text-black font-semibold">
+                    <RouterLink :to="{name:'product'}" class="hover:text-gray-800 text-black font-semibold">
                         It has roots in a piece of classical Latin literature from 45 BC,
                         making it over 2000 years old
                     </RouterLink>
@@ -39,12 +39,12 @@
         <!-- Product item -->
         <div
             class="bg-white  rounded-md shadow border border-gray-300 hover:border-purple-600 transition-colors overflow-hidden">
-            <RouterLink to="/src/product.html">
+            <RouterLink :to="{name:'product'}">
                 <img src="/src/img/1_1.jpg" alt="" class="rounded-t-md hover:scale-105 transition hover:rotate-1">
             </RouterLink>
             <div class="p-3">
                 <h3>
-                    <RouterLink to="/src/product.html" class="hover:text-gray-800 text-black font-semibold">
+                    <RouterLink :to="{name:'product'}" class="hover:text-gray-800 text-black font-semibold">
                         It has roots in a piece of classical Latin literature from 45 BC,
                         making it over 2000 years old
                     </RouterLink>
@@ -76,12 +76,12 @@
         <!-- Product item -->
         <div
             class="bg-white  rounded-md shadow border border-gray-300 hover:border-purple-600 transition-colors overflow-hidden">
-            <RouterLink to="/src/product.html">
+            <RouterLink :to="{name:'product'}">
                 <img src="/src/img/1_1.jpg" alt="" class="rounded-t-md hover:scale-105 transition hover:rotate-1">
             </RouterLink>
             <div class="p-3">
                 <h3>
-                    <RouterLink to="/src/product.html" class="hover:text-gray-800 text-black font-semibold">
+                    <RouterLink :to="{name:'product'}" class="hover:text-gray-800 text-black font-semibold">
                         It has roots in a piece of classical Latin literature from 45 BC,
                         making it over 2000 years old
                     </RouterLink>
@@ -113,12 +113,12 @@
         <!-- Product item -->
         <div
             class="bg-white  rounded-md shadow border border-gray-300 hover:border-purple-600 transition-colors overflow-hidden">
-            <RouterLink to="/src/product.html">
+            <RouterLink :to="{name:'product'}">
                 <img src="/src/img/1_1.jpg" alt="" class="rounded-t-md hover:scale-105 transition hover:rotate-1">
             </RouterLink>
             <div class="p-3">
                 <h3>
-                    <RouterLink to="/src/product.html" class="hover:text-gray-800 text-black font-semibold">
+                    <RouterLink :to="{name:'product'}" class="hover:text-gray-800 text-black font-semibold">
                         It has roots in a piece of classical Latin literature from 45 BC,
                         making it over 2000 years old
                     </RouterLink>

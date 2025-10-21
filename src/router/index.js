@@ -1,11 +1,71 @@
 import {createRouter,createWebHistory} from "vue-router";
 import Home from "@/views/Home.vue";
+import Product from "@/views/Product.vue";
+import Cart from "@/views/Cart.vue";
+import Profile from "@/views/Profile.vue";
+import Orders from "@/views/Orders.vue";
+import Logout from "@/views/Logout.vue";
+import Login from "@/views/Login.vue";
+import Signup from "@/views/Signup.vue";
+import OrderDetails from "@/views/OrderDetails.vue";
+import PasswordReset from "@/views/PasswordReset.vue";
+import Watchlist from "@/views/Watchlist.vue";
 
 const routes = [
     {
         path: '/',
         name: 'home',
         component: Home,
+    },
+    {
+        path: '/product',
+        name: 'product',
+        component: Product,
+    },
+    {
+        path: '/cart',
+        name: 'cart',
+        component: Cart
+    },
+    {
+        path: '/profile',
+        name: 'profile',
+        component: Profile
+    },
+    {
+        path: '/watchlist',
+        name: 'watchlist',
+        component: Watchlist
+    },
+    {
+        path: '/orders',
+        name: 'orders',
+        component: Orders
+    },
+    {
+        path: '/order-details',
+        name: 'order-details',
+        component: OrderDetails
+    },
+    {
+        path: '/logout',
+        name: 'logout',
+        component: Logout
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: Login
+    },
+    {
+        path: '/signup',
+        name: 'signup',
+        component: Signup
+    },
+    {
+        path: '/password-reset',
+        name: 'password-reset',
+        component: PasswordReset
     }
 ]
 
