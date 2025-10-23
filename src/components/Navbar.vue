@@ -1,12 +1,17 @@
 <template>
-    <header class="flex justify-between bg-slate-800 text-white px-4">
+  <header class="flex justify-between bg-slate-800 text-white px-4">
     <div class="py-navbar-item">
-      <RouterLink :to="{name:'home'}"> Logo </RouterLink>
+      <RouterLink :to="{ name: 'home' }"> Logo </RouterLink>
     </div>
-    <div class="block fixed z-20 top-0  bottom-0 shadow-2xl w-[220px] left-[-220px] bg-slate-900 md:hidden transition-all">
+    <div :class="{
+      'block fixed z-20 top-0  bottom-0 shadow-2xl w-[220px]  bg-slate-900 md:hidden transition-all duration-300': true,
+      'left-[-220px]': !moblieMenuOpen,
+      'left-0': moblieMenuOpen
+    }">
       <ul>
         <li>
-          <RouterLink :to="{name:'home'}" class="flex items-center py-2 px-navbar-item transition-all hover:bg-slate-700">
+          <RouterLink :to="{ name: 'home' }"
+            class="flex items-center py-2 px-navbar-item transition-all hover:bg-slate-700">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-5 h-5 mr-2">
               <path stroke-linecap="round" stroke-linejoin="round"
@@ -24,7 +29,7 @@
       </ul>
       <ul>
         <li class="">
-          <RouterLink :to="{name:'cart'}"
+          <RouterLink :to="{ name: 'cart' }"
             class="flex items-center gap-2 py-2 px-navbar-item transition-all hover:bg-slate-700">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-5 h-5 mr-2">
@@ -34,17 +39,22 @@
             Cart
           </RouterLink>
         </li>
-        <li class="relative">
-          <RouterLink to="#" class="flex justify-between items-center py-2 px-navbar-item transition-all hover:bg-slate-700">
+        <li class="relative" ref="mobileDropdownRef">
+          <button class="flex justify-between items-center py-2 px-navbar-item transition-all hover:bg-slate-700 w-full"
+            @click="moblieDropDownOpen = !moblieDropDownOpen">
             My Account
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-5 h-5 ml-3">
               <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
             </svg>
-          </RouterLink>
-          <ul class="w-full bg-slate-800">
+          </button>
+          <ul class="w-full bg-slate-800 overflow-hidden transition-all duration-300 ease-in-out" :class="{
+            'max-h-0 opacity-0': !moblieDropDownOpen,
+            'max-h-96 opacity-100': moblieDropDownOpen
+          }">
             <li>
-              <RouterLink :to="{name:'profile'}" class="flex items-center py-2 px-4 transition-all hover:bg-slate-700">
+              <RouterLink :to="{ name: 'profile' }"
+                class="flex items-center py-2 px-4 transition-all hover:bg-slate-700">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                   stroke="currentColor" class="w-6 h-6 mr-3">
                   <path stroke-linecap="round" stroke-linejoin="round"
@@ -54,7 +64,8 @@
               </RouterLink>
             </li>
             <li>
-              <RouterLink :to="{name:'watchlist'}" class="flex items-center py-2 px-4 transition-all hover:bg-slate-700">
+              <RouterLink :to="{ name: 'watchlist' }"
+                class="flex items-center py-2 px-4 transition-all hover:bg-slate-700">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                   stroke="currentColor" class="w-6 h-6 mr-3">
                   <path stroke-linecap="round" stroke-linejoin="round"
@@ -64,7 +75,8 @@
               </RouterLink>
             </li>
             <li>
-              <RouterLink :to="{name:'orders'}" class="flex items-center py-2 px-4 transition-all hover:bg-slate-700">
+              <RouterLink :to="{ name: 'orders' }"
+                class="flex items-center py-2 px-4 transition-all hover:bg-slate-700">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                   stroke="currentColor" class="w-6 h-6 mr-3">
                   <path stroke-linecap="round" stroke-linejoin="round"
@@ -74,7 +86,8 @@
               </RouterLink>
             </li>
             <li>
-              <RouterLink :to="{name:'logout'}" class="flex items-center py-2 px-4 transition-all hover:bg-slate-700">
+              <RouterLink :to="{ name: 'logout' }"
+                class="flex items-center py-2 px-4 transition-all hover:bg-slate-700">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                   stroke="currentColor" class="w-6 h-6 mr-3">
                   <path stroke-linecap="round" stroke-linejoin="round"
@@ -86,7 +99,8 @@
           </ul>
         </li>
         <li class="my-3">
-          <RouterLink :to="{name:'login'}" class="flex items-center py-2 px-navbar-item transition-all hover:bg-slate-700">
+          <RouterLink :to="{ name: 'login' }"
+            class="flex items-center py-2 px-navbar-item transition-all hover:bg-slate-700">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-6 h-6 mr-2">
               <path stroke-linecap="round" stroke-linejoin="round"
@@ -96,7 +110,7 @@
           </RouterLink>
         </li>
         <li class="px-3">
-          <RouterLink :to="{name:'signup'}"
+          <RouterLink :to="{ name: 'signup' }"
             class="flex items-center py-2 px-3 rounded transition-colors bg-emerald-500 hover:bg-emerald-600">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-6 h-6 mr-2">
@@ -111,7 +125,7 @@
     <nav class="hidden md:block">
       <ul class="grid grid-flow-col">
         <li>
-          <RouterLink :to="{name:'home'}"
+          <RouterLink :to="{ name: 'home' }"
             class="flex items-center py-navbar-item px-navbar-item transition-all hover:bg-slate-700">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-6 h-6 mr-3">
@@ -122,17 +136,19 @@
           </RouterLink>
         </li>
         <li>
-          <RouterLink to="#" class="block py-navbar-item px-navbar-item transition-all hover:bg-slate-700">Category</RouterLink>
+          <RouterLink to="#" class="block py-navbar-item px-navbar-item transition-all hover:bg-slate-700">Category
+          </RouterLink>
         </li>
         <li>
-          <RouterLink to="#" class="block py-navbar-item px-navbar-item transition-all hover:bg-slate-700">Something</RouterLink>
+          <RouterLink to="#" class="block py-navbar-item px-navbar-item transition-all hover:bg-slate-700">Something
+          </RouterLink>
         </li>
       </ul>
     </nav>
     <nav class="hidden md:block">
       <ul class="grid grid-flow-col items-center">
         <li class="">
-          <RouterLink :to="{name:'cart'}"
+          <RouterLink :to="{ name: 'cart' }"
             class="flex items-center gap-2 py-navbar-item px-navbar-item transition-all hover:bg-slate-700">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-6 h-6 mr-2">
@@ -142,17 +158,19 @@
             Cart
           </RouterLink>
         </li>
-        <li class="relative">
-          <RouterLink to="#" class="flex items-center py-navbar-item px-navbar-item transition-all hover:bg-slate-700">
+        <li class="relative" ref="desktopDropdownRef">
+          <button @click="desktopDropDownOpen = !desktopDropDownOpen"
+            class="flex items-center py-navbar-item px-navbar-item transition-all hover:bg-slate-700">
             My Account
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-5 h-5 ml-3">
               <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
             </svg>
-          </RouterLink>
-          <ul class="absolute z-10 w-36 right-0 bg-slate-800">
+          </button>
+          <ul class="absolute z-10 w-36 right-0 bg-slate-800" v-show="desktopDropDownOpen">
             <li>
-              <RouterLink :to="{name:'profile'}" class="flex items-center py-2 px-4 transition-all hover:bg-slate-700">
+              <RouterLink :to="{ name: 'profile' }"
+                class="flex items-center py-2 px-4 transition-all hover:bg-slate-700">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                   stroke="currentColor" class="w-6 h-6 mr-3">
                   <path stroke-linecap="round" stroke-linejoin="round"
@@ -162,7 +180,8 @@
               </RouterLink>
             </li>
             <li>
-              <RouterLink :to="{name:'watchlist'}" class="flex items-center py-2 px-4 transition-all hover:bg-slate-700">
+              <RouterLink :to="{ name: 'watchlist' }"
+                class="flex items-center py-2 px-4 transition-all hover:bg-slate-700">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                   stroke="currentColor" class="w-6 h-6 mr-3">
                   <path stroke-linecap="round" stroke-linejoin="round"
@@ -172,7 +191,8 @@
               </RouterLink>
             </li>
             <li>
-              <RouterLink :to="{name:'orders'}" class="flex items-center py-2 px-4 transition-all hover:bg-slate-700">
+              <RouterLink :to="{ name: 'orders' }"
+                class="flex items-center py-2 px-4 transition-all hover:bg-slate-700">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                   stroke="currentColor" class="w-6 h-6 mr-3">
                   <path stroke-linecap="round" stroke-linejoin="round"
@@ -182,7 +202,8 @@
               </RouterLink>
             </li>
             <li>
-              <RouterLink :to="{name:'logout'}" class="flex items-center py-2 px-4 transition-all hover:bg-slate-700">
+              <RouterLink :to="{ name: 'logout' }"
+                class="flex items-center py-2 px-4 transition-all hover:bg-slate-700">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                   stroke="currentColor" class="w-6 h-6 mr-3">
                   <path stroke-linecap="round" stroke-linejoin="round"
@@ -194,7 +215,7 @@
           </ul>
         </li>
         <li>
-          <RouterLink :to="{name:'login'}"
+          <RouterLink :to="{ name: 'login' }"
             class="flex items-center py-navbar-item px-navbar-item transition-all hover:bg-slate-700">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-6 h-6 mr-2">
@@ -205,7 +226,7 @@
           </RouterLink>
         </li>
         <li>
-          <RouterLink :to="{name:'signup'}"
+          <RouterLink :to="{ name: 'signup' }"
             class="flex items-center py-2 px-3 rounded transition-colors bg-emerald-500 hover:bg-emerald-600 ml-4">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-6 h-6 mr-2">
@@ -217,7 +238,7 @@
         </li>
       </ul>
     </nav>
-    <button class="block md:hidden">
+    <button class="block md:hidden" @click="moblieMenuOpen = !moblieMenuOpen">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
         class="size-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
@@ -225,3 +246,16 @@
     </button>
   </header>
 </template>
+<script setup>
+import { ref } from "vue";
+import useClickOutside from "@/composables/useClickOutside";
+const moblieMenuOpen = ref(false);
+const moblieDropDownOpen = ref(false);
+const desktopDropDownOpen = ref(false);
+const mobileDropdownRef = ref(null);
+const desktopDropdownRef = ref(null);
+
+
+useClickOutside(mobileDropdownRef, () => { moblieDropDownOpen.value = false });
+useClickOutside(desktopDropdownRef, () => { desktopDropDownOpen.value = false });
+</script>
