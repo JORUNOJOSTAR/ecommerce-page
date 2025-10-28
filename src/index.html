@@ -15,7 +15,7 @@
       <a href="/"> Logo </a>
     </div>
     <!-- Responsive Menu -->
-    <div  x-transition
+    <div x-transition
       class="block fixed z-20 top-0  bottom-0 shadow-2xl w-[220px] bg-slate-900 md:hidden transition-all"
       :class="mobileMenuOpen?'left-0':'-left-[220px]'">
       <ul>
@@ -48,15 +48,17 @@
             Cart
           </a>
         </li>
-        <li class="relative">
-          <a href="#" class="flex justify-between items-center py-2 px-navbar-item transition-all hover:bg-slate-700">
+        <li class="relative" x-data="{open:false}">
+          <a
+          @click="open=!open"
+           class="cursor-pointer flex justify-between items-center py-2 px-navbar-item transition-all hover:bg-slate-700">
             My Account
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
               stroke="currentColor" class="w-5 h-5 ml-3">
               <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
             </svg>
           </a>
-          <ul class="w-full bg-slate-800">
+          <ul x-show="open" x-transition class="w-full bg-slate-800">
             <li>
               <a href="/src/profile.html" class="flex items-center py-2 px-4 transition-all hover:bg-slate-700">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
