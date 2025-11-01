@@ -3,12 +3,12 @@
         <!-- Product item -->
         <div
             class="bg-white  rounded-md shadow border border-gray-300 hover:border-purple-600 transition-colors overflow-hidden">
-            <RouterLink :to="{name:'product'}">
+            <RouterLink :to="{ name: 'product' }">
                 <img src="/src/img/1_1.jpg" alt="" class="rounded-t-md hover:scale-105 transition hover:rotate-1">
             </RouterLink>
             <div class="p-3">
                 <h3>
-                    <RouterLink :to="{name:'product'}" class="hover:text-gray-800 text-black font-semibold">
+                    <RouterLink :to="{ name: 'product' }" class="hover:text-gray-800 text-black font-semibold">
                         It has roots in a piece of classical Latin literature from 45 BC,
                         making it over 2000 years old
                     </RouterLink>
@@ -23,7 +23,7 @@
                                 d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12Z" />
                         </svg>
                     </button>
-                    <button class="flex items-center btn-primary">
+                    <button class="flex items-center btn-primary" @click="cartStore.addToCart">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="h-6 w-6 mr-2">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -39,12 +39,12 @@
         <!-- Product item -->
         <div
             class="bg-white  rounded-md shadow border border-gray-300 hover:border-purple-600 transition-colors overflow-hidden">
-            <RouterLink :to="{name:'product'}">
+            <RouterLink :to="{ name: 'product' }">
                 <img src="/src/img/1_1.jpg" alt="" class="rounded-t-md hover:scale-105 transition hover:rotate-1">
             </RouterLink>
             <div class="p-3">
                 <h3>
-                    <RouterLink :to="{name:'product'}" class="hover:text-gray-800 text-black font-semibold">
+                    <RouterLink :to="{ name: 'product' }" class="hover:text-gray-800 text-black font-semibold">
                         It has roots in a piece of classical Latin literature from 45 BC,
                         making it over 2000 years old
                     </RouterLink>
@@ -60,7 +60,7 @@
                         </svg>
                     </button>
                     <button
-                        class="flex items-center bg-purple-500 text-white py-2 px-3 rounded hover:bg-purple-700 active:bg-purple-900 transition-colors shadow-md">
+                        class="flex items-center bg-purple-500 text-white py-2 px-3 rounded hover:bg-purple-700 active:bg-purple-900 transition-colors shadow-md" @click="cartStore.addToCart">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="h-6 w-6 mr-2">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -76,12 +76,12 @@
         <!-- Product item -->
         <div
             class="bg-white  rounded-md shadow border border-gray-300 hover:border-purple-600 transition-colors overflow-hidden">
-            <RouterLink :to="{name:'product'}">
+            <RouterLink :to="{ name: 'product' }">
                 <img src="/src/img/1_1.jpg" alt="" class="rounded-t-md hover:scale-105 transition hover:rotate-1">
             </RouterLink>
             <div class="p-3">
                 <h3>
-                    <RouterLink :to="{name:'product'}" class="hover:text-gray-800 text-black font-semibold">
+                    <RouterLink :to="{ name: 'product' }" class="hover:text-gray-800 text-black font-semibold">
                         It has roots in a piece of classical Latin literature from 45 BC,
                         making it over 2000 years old
                     </RouterLink>
@@ -97,7 +97,7 @@
                         </svg>
                     </button>
                     <button
-                        class="flex items-center bg-purple-500 text-white py-2 px-3 rounded hover:bg-purple-700 active:bg-purple-900 transition-colors shadow-md">
+                        class="flex items-center bg-purple-500 text-white py-2 px-3 rounded hover:bg-purple-700 active:bg-purple-900 transition-colors shadow-md" @click="cartStore.addToCart">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="h-6 w-6 mr-2">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -113,12 +113,12 @@
         <!-- Product item -->
         <div
             class="bg-white  rounded-md shadow border border-gray-300 hover:border-purple-600 transition-colors overflow-hidden">
-            <RouterLink :to="{name:'product'}">
+            <RouterLink :to="{ name: 'product' }">
                 <img src="/src/img/1_1.jpg" alt="" class="rounded-t-md hover:scale-105 transition hover:rotate-1">
             </RouterLink>
             <div class="p-3">
                 <h3>
-                    <RouterLink :to="{name:'product'}" class="hover:text-gray-800 text-black font-semibold">
+                    <RouterLink :to="{ name: 'product' }" class="hover:text-gray-800 text-black font-semibold">
                         It has roots in a piece of classical Latin literature from 45 BC,
                         making it over 2000 years old
                     </RouterLink>
@@ -134,7 +134,7 @@
                         </svg>
                     </button>
                     <button
-                        class="flex items-center bg-purple-500 text-white py-2 px-3 rounded hover:bg-purple-700 active:bg-purple-900 transition-colors shadow-md">
+                        class="flex items-center bg-purple-500 text-white py-2 px-3 rounded hover:bg-purple-700 active:bg-purple-900 transition-colors shadow-md" @click="cartStore.addToCart">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="h-6 w-6 mr-2">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -147,5 +147,23 @@
         </div>
         <!-- Product item -->
     </div>
+    <div class="absolute w-[400px] -ml-[200px] left-1/2 top-8 py-2 px-4 pb-4 bg-emerald-500 text-white" v-if="cartStore.visible">
+        <div class="flex justify-between">
+            <div class="font-semibold">{{ cartStore.message }}</div>
+            <button class="flex items-center justify-center w-[30px] h-[30px] rounded-full hover:bg-black/10 transition-colors" @click="cartStore.close">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+        <!-- Progress -->
+        <div>
+            <div class="absolute left-0 bottom-0 right-0 h-[6px] bg-black/10" :style="{width: cartStore.percent + '%'}"></div>
+        </div>
+    </div>
 </template>
-<script setup></script>
+<script setup>
+import { useCartStore } from '@/stores/cart';
+const cartStore = useCartStore();
+</script>

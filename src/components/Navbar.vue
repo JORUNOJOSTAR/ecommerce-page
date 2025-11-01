@@ -28,16 +28,19 @@
         </li>
       </ul>
       <ul>
-        <li class="">
-          <RouterLink :to="{ name: 'cart' }"
-            class="flex items-center gap-2 py-2 px-navbar-item transition-all hover:bg-slate-700">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-              stroke="currentColor" class="w-5 h-5 mr-2">
-              <path stroke-linecap="round" stroke-linejoin="round"
-                d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
-            </svg>
-            Cart
-          </RouterLink>
+        <li>
+            <RouterLink :to="{ name: 'cart' }"
+              class="flex justify-between gap-2 py-2 px-navbar-item transition-all hover:bg-slate-700">
+              <div class="flex">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="w-5 h-5 mr-2">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                </svg>
+                Cart
+              </div>
+              <small class="py-[2px] px-[8px] rounded-full bg-red-500" v-if="cartStore.productCounter">{{ cartStore.productCounter }}</small>
+            </RouterLink>
         </li>
         <li class="relative" ref="mobileDropdownRef">
           <button class="flex justify-between items-center py-2 px-navbar-item transition-all hover:bg-slate-700 w-full"
@@ -147,7 +150,7 @@
     </nav>
     <nav class="hidden md:block">
       <ul class="grid grid-flow-col items-center">
-        <li class="">
+        <li class="relative">
           <RouterLink :to="{ name: 'cart' }"
             class="flex items-center gap-2 py-navbar-item px-navbar-item transition-all hover:bg-slate-700">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -156,6 +159,7 @@
                 d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
             </svg>
             Cart
+            <small class="z-20 absolute top-2 -right-1 py-[2px] px-[8px] rounded-full bg-red-500" v-if="cartStore.productCounter">{{ cartStore.productCounter }}</small>
           </RouterLink>
         </li>
         <li class="relative" ref="desktopDropdownRef">
@@ -248,12 +252,14 @@
 </template>
 <script setup>
 import { ref } from "vue";
+import { useCartStore } from "@/stores/cart";
 import useClickOutside from "@/composables/useClickOutside";
 const moblieMenuOpen = ref(false);
 const moblieDropDownOpen = ref(false);
 const desktopDropDownOpen = ref(false);
 const mobileDropdownRef = ref(null);
 const desktopDropdownRef = ref(null);
+const cartStore = useCartStore();
 
 
 useClickOutside(mobileDropdownRef, () => { moblieDropDownOpen.value = false });
