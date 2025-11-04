@@ -1,9 +1,18 @@
 document.addEventListener('alpine:init', () => {
     Alpine.data('index', () => ({
-        productCounter: 10,
+        cartItems: 0,
+        watchingItems: [],
+        get watchListItems(){
+            return this.watchingItems.length;
+        },
         addToCart() {
-            this.productCounter++;
+            this.cartItems++;
             this.toast.show('The item was added into the cart');
+        },
+        addToWatchList(id) {
+            if (this.watchingItems.includes(id)) return;
+            this.watchingItems.push(id);
+            this.toast.show('The item was added into your watchlist');
         },
         toast: {
             visible: false,
@@ -14,7 +23,7 @@ document.addEventListener('alpine:init', () => {
             message: null,
             close() {
                 this.visible = false;
-                clearInterval(this.interval)
+                clearInterval(this.interval);
             },
             show(message) {
                 if(this.interval) {
