@@ -10,9 +10,19 @@ document.addEventListener('alpine:init', () => {
             this.toast.show('The item was added into the cart');
         },
         addToWatchList(id) {
-            if (this.watchingItems.includes(id)) return;
-            this.watchingItems.push(id);
-            this.toast.show('The item was added into your watchlist');
+            if (this.watchingItems.includes(id)) {
+                this.watchingItems.splice(this.watchingItems.indexOf(id),1);
+                this.toast.show('The item was removed from your watchlist')
+            }else{
+                this.watchingItems.push(id);
+                this.toast.show('The item was added into your watchlist');
+            }
+        },
+        isInWatchList(id){
+            return this.watchingItems.includes(id);
+        },
+        closeToast(){
+            this.toast.close();
         },
         toast: {
             visible: false,
