@@ -15,8 +15,9 @@
                 </h3>
                 <p class="text-xl font-bold">17.99</p>
                 <div class="flex justify-between mt-3">
-                    <button
-                        class="flex items-center justify-center text-purple-600 transition-colors hover:text-white hover:bg-purple-500 active:bg-purple-800 border-purple-500 border-2  rounded-full w-10 h-10">
+                    <button @click="cartStore.addToWatchList(1)"
+                        class="cursor-pointer flex items-center justify-center text-purple-600 transition-colors hover:text-white hover:bg-purple-500 active:bg-purple-800 border-purple-500 border-2  rounded-full w-10 h-10"
+                        :class="cartStore.isInWatchList(1) ? 'bg-purple-500 text-white' : ''">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="h-6 w-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -51,8 +52,9 @@
                 </h3>
                 <p class="text-xl font-bold">17.99</p>
                 <div class="flex justify-between mt-3">
-                    <button
-                        class="flex items-center justify-center text-purple-600 transition-colors hover:text-white hover:bg-purple-500 active:bg-purple-800 border-purple-500 border-2  rounded-full w-10 h-10">
+                    <button @click="cartStore.addToWatchList(2)"
+                        class="cursor-pointer flex items-center justify-center text-purple-600 transition-colors hover:text-white hover:bg-purple-500 active:bg-purple-800 border-purple-500 border-2  rounded-full w-10 h-10"
+                        :class="cartStore.isInWatchList(2) ? 'bg-purple-500 text-white' : ''">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="h-6 w-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -60,7 +62,8 @@
                         </svg>
                     </button>
                     <button
-                        class="flex items-center bg-purple-500 text-white py-2 px-3 rounded hover:bg-purple-700 active:bg-purple-900 transition-colors shadow-md" @click="cartStore.addToCart">
+                        class="flex items-center bg-purple-500 text-white py-2 px-3 rounded hover:bg-purple-700 active:bg-purple-900 transition-colors shadow-md"
+                        @click="cartStore.addToCart">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="h-6 w-6 mr-2">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -88,8 +91,9 @@
                 </h3>
                 <p class="text-xl font-bold">17.99</p>
                 <div class="flex justify-between mt-3">
-                    <button
-                        class="flex items-center justify-center text-purple-600 transition-colors hover:text-white hover:bg-purple-500 active:bg-purple-800 border-purple-500 border-2  rounded-full w-10 h-10">
+                    <button @click="cartStore.addToWatchList(3)"
+                        class="cursor-pointer flex items-center justify-center text-purple-600 transition-colors hover:text-white hover:bg-purple-500 active:bg-purple-800 border-purple-500 border-2  rounded-full w-10 h-10"
+                        :class="cartStore.isInWatchList(3) ? 'bg-purple-500 text-white' : ''">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="h-6 w-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -97,7 +101,8 @@
                         </svg>
                     </button>
                     <button
-                        class="flex items-center bg-purple-500 text-white py-2 px-3 rounded hover:bg-purple-700 active:bg-purple-900 transition-colors shadow-md" @click="cartStore.addToCart">
+                        class="flex items-center bg-purple-500 text-white py-2 px-3 rounded hover:bg-purple-700 active:bg-purple-900 transition-colors shadow-md"
+                        @click="cartStore.addToCart">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="h-6 w-6 mr-2">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -125,8 +130,9 @@
                 </h3>
                 <p class="text-xl font-bold">17.99</p>
                 <div class="flex justify-between mt-3">
-                    <button
-                        class="flex items-center justify-center text-purple-600 transition-colors hover:text-white hover:bg-purple-500 active:bg-purple-800 border-purple-500 border-2  rounded-full w-10 h-10">
+                    <button @click="cartStore.addToWatchList(4)"
+                        class="cursor-pointer flex items-center justify-center text-purple-600 transition-colors hover:text-white hover:bg-purple-500 active:bg-purple-800 border-purple-500 border-2  rounded-full w-10 h-10"
+                        :class="cartStore.isInWatchList(4) ? 'bg-purple-500 text-white' : ''">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="h-6 w-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -134,7 +140,8 @@
                         </svg>
                     </button>
                     <button
-                        class="flex items-center bg-purple-500 text-white py-2 px-3 rounded hover:bg-purple-700 active:bg-purple-900 transition-colors shadow-md" @click="cartStore.addToCart">
+                        class="flex items-center bg-purple-500 text-white py-2 px-3 rounded hover:bg-purple-700 active:bg-purple-900 transition-colors shadow-md"
+                        @click="cartStore.addToCart">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="h-6 w-6 mr-2">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -147,10 +154,13 @@
         </div>
         <!-- Product item -->
     </div>
-    <div class="absolute w-[400px] -ml-[200px] left-1/2 top-8 py-2 px-4 pb-4 bg-emerald-500 text-white" v-if="cartStore.visible">
+    <div class="absolute w-[400px] -ml-[200px] left-1/2 top-8 py-2 px-4 pb-4 bg-emerald-500 text-white"
+        v-if="cartStore.visible">
         <div class="flex justify-between">
             <div class="font-semibold">{{ cartStore.message }}</div>
-            <button class="flex items-center justify-center w-[30px] h-[30px] rounded-full hover:bg-black/10 transition-colors" @click="cartStore.close">
+            <button
+                class="flex items-center justify-center w-[30px] h-[30px] rounded-full hover:bg-black/10 transition-colors"
+                @click="cartStore.close">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -159,7 +169,9 @@
         </div>
         <!-- Progress -->
         <div>
-            <div class="absolute left-0 bottom-0 right-0 h-[6px] bg-black/10" :style="{width: cartStore.percent + '%'}"></div>
+            <div class="absolute left-0 bottom-0 right-0 h-[6px] bg-black/10"
+                :style="{ width: cartStore.percent + '%' }">
+            </div>
         </div>
     </div>
 </template>
