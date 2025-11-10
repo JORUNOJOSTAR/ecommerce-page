@@ -79,7 +79,7 @@
                   Watchlist
                 </div>
                 <small class="z-20 top-2 -right-1 py-[2px] px-[8px] rounded-full bg-red-500"
-                  v-if="cartStore.watchListItems">{{ cartStore.watchListItems }}</small>
+                  v-if="watchlistStore.watchListItems">{{ watchlistStore.watchListItems }}</small>
               </RouterLink>
             </li>
             <li>
@@ -201,7 +201,7 @@
                   Watchlist
                 </div>
                 <small class="z-20 top-2 -right-1 py-[2px] px-[8px] rounded-full bg-red-500"
-                  v-if="cartStore.watchListItems">{{ cartStore.watchListItems }}</small>
+                  v-if="watchlistStore.watchListItems">{{ watchlistStore.watchListItems }}</small>
               </RouterLink>
             </li>
             <li>
@@ -263,6 +263,7 @@
 <script setup>
 import { ref } from "vue";
 import { useCartStore } from "@/stores/cart";
+import { useWatchListStore } from "@/stores/watchlist";
 import userClickOutside from "@/composables/userClickOutside";
 const moblieMenuOpen      = ref(false);
 const moblieDropDownOpen  = ref(false);
@@ -272,7 +273,7 @@ const desktopDropdownRef  = ref(null);
 const mobileMenuRef       = ref(null);
 const hamburgerMenuRef    = ref(null);
 const cartStore           = useCartStore();
-
+const watchlistStore      = useWatchListStore();
 
 userClickOutside(mobileDropdownRef , () => { moblieDropDownOpen.value  = false; });
 userClickOutside(desktopDropdownRef, () => { desktopDropDownOpen.value = false; });

@@ -15,9 +15,9 @@
                 </h3>
                 <p class="text-xl font-bold">17.99</p>
                 <div class="flex justify-between mt-3">
-                    <button @click="cartStore.addToWatchList(1)"
+                    <button @click="watchlistStore.addToWatchList(1)"
                         class="cursor-pointer flex items-center justify-center text-purple-600 transition-colors hover:text-white hover:bg-purple-500 active:bg-purple-800 border-purple-500 border-2  rounded-full w-10 h-10"
-                        :class="cartStore.isInWatchList(1) ? 'bg-purple-500 text-white' : ''">
+                        :class="watchlistStore.isInWatchList(1) ? 'bg-purple-500 text-white' : ''">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="h-6 w-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -52,9 +52,9 @@
                 </h3>
                 <p class="text-xl font-bold">17.99</p>
                 <div class="flex justify-between mt-3">
-                    <button @click="cartStore.addToWatchList(2)"
+                    <button @click="watchlistStore.addToWatchList(2)"
                         class="cursor-pointer flex items-center justify-center text-purple-600 transition-colors hover:text-white hover:bg-purple-500 active:bg-purple-800 border-purple-500 border-2  rounded-full w-10 h-10"
-                        :class="cartStore.isInWatchList(2) ? 'bg-purple-500 text-white' : ''">
+                        :class="watchlistStore.isInWatchList(2) ? 'bg-purple-500 text-white' : ''">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="h-6 w-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -91,9 +91,9 @@
                 </h3>
                 <p class="text-xl font-bold">17.99</p>
                 <div class="flex justify-between mt-3">
-                    <button @click="cartStore.addToWatchList(3)"
+                    <button @click="watchlistStore.addToWatchList(3)"
                         class="cursor-pointer flex items-center justify-center text-purple-600 transition-colors hover:text-white hover:bg-purple-500 active:bg-purple-800 border-purple-500 border-2  rounded-full w-10 h-10"
-                        :class="cartStore.isInWatchList(3) ? 'bg-purple-500 text-white' : ''">
+                        :class="watchlistStore.isInWatchList(3) ? 'bg-purple-500 text-white' : ''">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="h-6 w-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -130,9 +130,9 @@
                 </h3>
                 <p class="text-xl font-bold">17.99</p>
                 <div class="flex justify-between mt-3">
-                    <button @click="cartStore.addToWatchList(4)"
+                    <button @click="watchlistStore.addToWatchList(4)"
                         class="cursor-pointer flex items-center justify-center text-purple-600 transition-colors hover:text-white hover:bg-purple-500 active:bg-purple-800 border-purple-500 border-2  rounded-full w-10 h-10"
-                        :class="cartStore.isInWatchList(4) ? 'bg-purple-500 text-white' : ''">
+                        :class="watchlistStore.isInWatchList(4) ? 'bg-purple-500 text-white' : ''">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                             stroke="currentColor" class="h-6 w-6">
                             <path stroke-linecap="round" stroke-linejoin="round"
@@ -155,12 +155,12 @@
         <!-- Product item -->
     </div>
     <div class="absolute w-[400px] -ml-[200px] left-1/2 top-8 py-2 px-4 pb-4 bg-emerald-500 text-white"
-        v-if="cartStore.visible">
+        v-if="toastStore.visible">
         <div class="flex justify-between">
-            <div class="font-semibold">{{ cartStore.message }}</div>
+            <div class="font-semibold">{{ toastStore.message }}</div>
             <button
                 class="flex items-center justify-center w-[30px] h-[30px] rounded-full hover:bg-black/10 transition-colors"
-                @click="cartStore.close">
+                @click="toastStore.close">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor" stroke-width="2">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -170,12 +170,17 @@
         <!-- Progress -->
         <div>
             <div class="absolute left-0 bottom-0 right-0 h-[6px] bg-black/10"
-                :style="{ width: cartStore.percent + '%' }">
+                :style="{ width: toastStore.percent + '%' }">
             </div>
         </div>
     </div>
 </template>
 <script setup>
 import { useCartStore } from '@/stores/cart';
+import { useWatchListStore } from '@/stores/watchlist';
+import { useToastStore } from '@/stores/toast';
+
 const cartStore = useCartStore();
+const watchlistStore = useWatchListStore();
+const toastStore = useToastStore();
 </script>
