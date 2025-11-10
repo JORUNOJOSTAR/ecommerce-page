@@ -1,30 +1,14 @@
 document.addEventListener('alpine:init', () => {
-    Alpine.data('index', () => ({
+
+    Alpine.store("header", {
         cartItems: 0,
         watchingItems: [],
-        get watchListItems(){
+        get watchListItems() {
             return this.watchingItems.length;
         },
-        addToCart() {
-            this.cartItems++;
-            this.toast.show('The item was added into the cart');
-        },
-        addToWatchList(id) {
-            if (this.watchingItems.includes(id)) {
-                this.watchingItems.splice(this.watchingItems.indexOf(id),1);
-                this.toast.show('The item was removed from your watchlist')
-            }else{
-                this.watchingItems.push(id);
-                this.toast.show('The item was added into your watchlist');
-            }
-        },
-        isInWatchList(id){
-            return this.watchingItems.includes(id);
-        },
-        closeToast(){
-            this.toast.close();
-        },
-        toast: {
+    })
+
+    Alpine.store("toast", {
             visible: false,
             delay: 5000,
             percent: 0,
@@ -36,12 +20,12 @@ document.addEventListener('alpine:init', () => {
                 clearInterval(this.interval);
             },
             show(message) {
-                if(this.interval) {
+                if (this.interval) {
                     clearInterval(this.interval);
                     this.interval = null;
                 }
 
-                if(this.timeout){
+                if (this.timeout) {
                     clearTimeout(this.timeout);
                     this.timeout = null;
                 }
@@ -51,11 +35,11 @@ document.addEventListener('alpine:init', () => {
                     this.visible = false;
                     this.timeout = null;
                 }, this.delay)
-                const startDate = Date.now(); 
-                const futureDate = Date.now() + this.delay; 
+                const startDate = Date.now();
+                const futureDate = Date.now() + this.delay;
                 this.interval = setInterval(() => {
                     const date = Date.now();
-                    this.percent = (date - startDate) * 100 / (futureDate - startDate); 
+                    this.percent = (date - startDate) * 100 / (futureDate - startDate);
                     if (this.percent >= 100) {
                         clearInterval(this.interval);
                         this.interval = null;
@@ -63,5 +47,26 @@ document.addEventListener('alpine:init', () => {
                 }, 30);
             }
         }
+    );
+
+    Alpine.data('productItem', () =>({
+        quantity: 1,
+        addToWatchList(id) {
+            if (Alpine.store('header').watchingItems.includes(id)) {
+                Alpine.store('header').watchingItems.splice(Alpine.store('header').watchingItems.indexOf(id), 1);
+                Alpine.store('toast').show('The item was removed from your watchlist')
+            } else {
+                Alpine.store('header').watchingItems.push(id);
+                Alpine.store('toast').show('The item was added into your watchlist');
+            }
+        },
+        isInWatchList(id) {
+            return Alpine.store('header').watchingItems.includes(id);
+        },
+        addToCart(quantity = 1) {
+            Alpine.store('header').cartItems += parseInt(quantity);
+            Alpine.store('toast').show('The item was added into the cart');
+        },
     }))
+
 })
