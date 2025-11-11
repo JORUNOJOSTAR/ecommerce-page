@@ -10,6 +10,8 @@ import Signup from "@/views/Signup.vue";
 import OrderDetails from "@/views/OrderDetails.vue";
 import PasswordReset from "@/views/PasswordReset.vue";
 import Watchlist from "@/views/Watchlist.vue";
+import { useToastStore } from "@/stores/toast";
+
 
 const routes = [
     {
@@ -72,6 +74,13 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(),
     routes,
+})
+
+// Prevent toast to continue or start show up when route change
+router.beforeEach((to,from,next)=>{
+    const toastStore = useToastStore();
+    toastStore.close();
+    next();
 })
 
 export default router;

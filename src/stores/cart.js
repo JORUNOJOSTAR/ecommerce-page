@@ -6,9 +6,9 @@ export const useCartStore = defineStore('cart',{
         cartItems : 0,
     }),
     actions: {
-        addToCart(){
+        addToCart(quantity=1){
             const toastStore = useToastStore();
-            this.cartItems++;
+            this.cartItems+=quantity;
             toastStore.show('The item was added into the cart');
         },
     }

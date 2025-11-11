@@ -78,10 +78,10 @@
             </div>
             <div class="flex items-center justify-between mb-3">
                 <label for="">Quantity</label>
-                <input type="number" value="1"
+                <input type="number" v-model="quantity"
                     class="bg-white rounded w-24 py-2 px-3 border border-gray-400 focus:border-purple-600 focus:ring-purple-600  focus:outline-none" />
             </div>
-            <button class="flex justify-center items-center btn-primary w-full">
+            <button @click="cartStore.addToCart(quantity)" class="flex justify-center items-center btn-primary w-full">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="h-6 w-6 mr-2">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -158,4 +158,9 @@
     </div>
 </template>
 <script setup>
+import { ref } from 'vue';
+import { useCartStore } from '@/stores/cart';
+
+const cartStore = useCartStore();
+const quantity = ref(1);
 </script>
