@@ -196,7 +196,8 @@
               </a>
             </li>
             <li>
-              <a href="/src/watchlist.html" class="flex items-center py-2 px-4 transition-all hover:bg-slate-700 justify-between">
+              <a href="/src/watchlist.html"
+                class="flex items-center py-2 px-4 transition-all hover:bg-slate-700 justify-between">
                 <div class="flex items-center">
                   <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6 mr-3">
@@ -266,40 +267,53 @@
   <!-- Product Item -->
   <div class="grid grid-cols-5 gap-6 p-5">
     <div class="col-span-3">
-      <div class="aspect-square flex items-center justify-center">
-        <img src="/src/img/1_1.jpg" alt="">
-      </div>
-      <div class="flex relative">
-        <a href="#"
-          class="flex items-center text-white absolute z-10 top-0 left-0 h-full  bg-black/10 hover:bg-black/20">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-            stroke="currentColor" class="size-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
-          </svg>
-        </a>
-        <a href="#"
-          class="flex items-center text-white absolute z-10 top-0 right-0 h-full  bg-black/10 hover:bg-black/20">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-            stroke="currentColor" class="size-6">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-          </svg>
-        </a>
-        <a href="#"
-          class="flex items-center justify-center border border-gray-200 hover:border-purple-600 transition-colors w-16">
-          <img src="/src/img/1_1.jpg" alt="">
-        </a>
-        <a href="#"
-          class="flex items-center justify-center border border-gray-200 hover:border-purple-600 transition-colors w-16">
-          <img src="/src/img/1_2.jpg" alt="">
-        </a>
-        <a href="#"
-          class="flex items-center justify-center border border-gray-200 hover:border-purple-600 transition-colors w-16">
-          <img src="/src/img/1_3.jpg" alt="">
-        </a>
-        <a href="#"
-          class="flex items-center justify-center border border-gray-200 hover:border-purple-600 transition-colors w-16">
-          <img src="/src/img/1_4.jpg" alt="">
-        </a>
+      <div x-data="{
+  images: ['img/1_1.jpg', 'img/1_2.jpg', 'img/1_3.jpg', 'img/1_4.jpg'],
+  activeImage: null,
+  prev() {
+      let index = this.images.indexOf(this.activeImage);
+      if (index === 0) 
+          index = this.images.length;
+      this.activeImage = this.images[index - 1];
+  },
+  next() {
+      let index = this.images.indexOf(this.activeImage);
+      if (index === this.images.length - 1) 
+          index = -1;
+      this.activeImage = this.images[index + 1];
+  },
+  init() {
+      this.activeImage = this.images.length > 0 ? this.images[0] : null
+  }
+}">
+        <div class="relative ">
+          <template x-for="image in images">
+            <div x-show="activeImage === image"  class="aspect-w-3 aspect-h-2">
+              <img :src="image" alt="" class="object-cover" />
+            </div>
+          </template>
+          <a @click.prevent="prev" class="cursor-pointer bg-black/30 text-white absolute left-0 top-1/2 -translate-y-1/2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </a>
+          <a @click.prevent="next" class="cursor-pointer bg-black/30 text-white absolute right-0 top-1/2 -translate-y-1/2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24"
+              stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </a>
+        </div>
+        <div class="flex">
+          <template x-for="image in images">
+            <a @click.prevent="activeImage = image"
+              class="cursor-pointer w-[80px] border border-gray-300 hover:border-purple-500 flex items-center justify-center"
+              :class="{'border-purple-600': activeImage === image}">
+              <img :src="image" alt="" class="object-cover" />
+            </a>
+          </template>
+        </div>
       </div>
     </div>
     <div class="col-span-2">
@@ -422,6 +436,24 @@
     </div>
   </div>
   <!-- Prodduct Item -->
+
+  <!-- Toast -->
+  <div x-data="toast" x-transition x-show="visible" x-cloak @notify.window="show($event.detail.message)"
+    class="absolute w-[400px] -ml-[200px] left-1/2 top-8  py-2 px-4 pb-4 bg-emerald-500 text-white">
+    <div class="font-semibold" x-text="message"></div>
+    <button @click="close()"
+      class="absolute flex items-center justify-center right-2 top-2 w-[30px] h-[30px] rounded-full hover:bg-black/10 transition-colors">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+        stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+    <!-- Progress -->
+    <div>
+      <div class="absolute left-0 bottom-0 right-0 h-[6px] bg-black/10" :style="{'width': `${percent}%`}"></div>
+    </div>
+  </div>
+  <!-- Toast -->
 </body>
 
 </html>

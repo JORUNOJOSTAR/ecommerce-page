@@ -8,7 +8,7 @@ document.addEventListener('alpine:init', () => {
         },
     })
 
-    Alpine.store("toast", {
+    Alpine.data("toast",()=>({
             visible: false,
             delay: 5000,
             percent: 0,
@@ -20,6 +20,7 @@ document.addEventListener('alpine:init', () => {
                 clearInterval(this.interval);
             },
             show(message) {
+                console.log(message);
                 if (this.interval) {
                     clearInterval(this.interval);
                     this.interval = null;
@@ -46,7 +47,7 @@ document.addEventListener('alpine:init', () => {
                     }
                 }, 30);
             }
-        }
+        })
     );
 
     Alpine.data('productItem', () =>({
@@ -54,10 +55,14 @@ document.addEventListener('alpine:init', () => {
         addToWatchList(id) {
             if (Alpine.store('header').watchingItems.includes(id)) {
                 Alpine.store('header').watchingItems.splice(Alpine.store('header').watchingItems.indexOf(id), 1);
-                Alpine.store('toast').show('The item was removed from your watchlist')
+                this.$dispatch('notify',{
+                    message: "The item was removed from your watchlist"
+                })
             } else {
                 Alpine.store('header').watchingItems.push(id);
-                Alpine.store('toast').show('The item was added into your watchlist');
+                this.$dispatch('notify',{
+                    message: 'The item was added into your watchlist'
+                })
             }
         },
         isInWatchList(id) {
@@ -65,7 +70,9 @@ document.addEventListener('alpine:init', () => {
         },
         addToCart(quantity = 1) {
             Alpine.store('header').cartItems += parseInt(quantity);
-            Alpine.store('toast').show('The item was added into the cart');
+            this.$dispatch('notify',{
+                message: 'The item was added into the cart'
+            })
         },
     }))
 
