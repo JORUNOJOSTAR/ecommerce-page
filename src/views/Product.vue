@@ -1,40 +1,29 @@
 <template>
     <div class="grid grid-cols-5 gap-6 p-5">
         <div class="col-span-3">
-            <div class="aspect-square flex items-center justify-center">
-                <img src="/src/img/1_1.jpg" alt="">
-            </div>
+            <img :src="activeImage" class="object-contain aspect-[3/2]">
             <div class="flex relative">
-                <RouterLink to="#"
+                <button @click="prev"
                     class="flex items-center text-white absolute z-10 top-0 left-0 h-full  bg-black/10 hover:bg-black/20">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
                     </svg>
-                </RouterLink>
-                <RouterLink to="#"
+                </button>
+                <button @click="next"
                     class="flex items-center text-white absolute z-10 top-0 right-0 h-full  bg-black/10 hover:bg-black/20">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
                     </svg>
-                </RouterLink>
-                <RouterLink to="#"
-                    class="flex items-center justify-center border border-gray-200 hover:border-purple-600 transition-colors w-16">
-                    <img src="/src/img/1_1.jpg" alt="">
-                </RouterLink>
-                <RouterLink to="#"
-                    class="flex items-center justify-center border border-gray-200 hover:border-purple-600 transition-colors w-16">
-                    <img src="/src/img/1_2.jpg" alt="">
-                </RouterLink>
-                <RouterLink to="#"
-                    class="flex items-center justify-center border border-gray-200 hover:border-purple-600 transition-colors w-16">
-                    <img src="/src/img/1_3.jpg" alt="">
-                </RouterLink>
-                <RouterLink to="#"
-                    class="flex items-center justify-center border border-gray-200 hover:border-purple-600 transition-colors w-16">
-                    <img src="/src/img/1_4.jpg" alt="">
-                </RouterLink>
+                </button>
+                <button
+                    @click.prevent="activeImage = image"
+                    v-for="(image,index) in imageData" :key="index"
+                    class="flex items-center justify-center border border-gray-200 hover:border-purple-600 transition-colors w-16"
+                    :class="{'border-purple-600': activeImage === image}">
+                    <img :src="image" alt="">
+                </button>
             </div>
         </div>
         <div class="col-span-2">
@@ -156,11 +145,37 @@
             </div>
         </div>
     </div>
+    <Toast/>
 </template>
 <script setup>
-import { ref } from 'vue';
+import { computed, ref } from 'vue';
 import { useCartStore } from '@/stores/cart';
+import Toast from '@/components/Toast.vue';
 
 const cartStore = useCartStore();
-const quantity = ref(1);
+const quantity  = ref(1);
+
+const imageData        = ref(['/src/img/1_1.jpg','/src/img/1_2.jpg','/src/img/1_3.jpg','/src/img/1_4.jpg']);
+const imagelength      = computed(()=>imageData.value.length);
+
+const activeImage      = ref(imageData.value.length>0 ? imageData.value[0] : null);
+const activeImageIndex = computed(()=>imageData.value.indexOf(activeImage.value)); 
+
+function prev(){
+    if(activeImageIndex.value===0) {
+        // 先頭のイメージがactiveの場合 
+        activeImage.value = imageData.value[imagelength.value-1];
+    }else{
+        activeImage.value = imageData.value[activeImageIndex.value-1];
+    }
+}
+
+function next(){
+    if(activeImageIndex.value===imagelength.value-1) {
+        // 後尾のイメージがactiveの場合
+        activeImage.value = imageData.value[0];
+    }else{
+        activeImage.value = imageData.value[activeImageIndex.value+1];
+    }
+}
 </script>
