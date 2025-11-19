@@ -1,8 +1,9 @@
 import { defineStore } from "pinia";
 import { useToastStore } from "@/stores/toast";
+import { useStorage } from "@vueuse/core";
 export const useWatchListStore = defineStore('watchlist',{
     state: ()=>({
-        watchList : [],
+        watchList : useStorage('watchListValue',[]),
     }),
     getters:{
         watchListItems : (state) => state.watchList.length,
