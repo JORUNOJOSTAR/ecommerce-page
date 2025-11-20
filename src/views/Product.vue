@@ -145,7 +145,7 @@
                         </ul>
                     </DisclosurePanel>
                     <DisclosureButton>
-                        <p class="text-right text-purple-500 hover:text-purple-700">
+                        <p class="mt-2 text-right text-purple-500 hover:text-purple-700">
                             {{open ? 'Read more' : 'Read less'}}
                         </p>
                     </DisclosureButton>
