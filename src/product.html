@@ -17,7 +17,7 @@
   </style>
 </head>
 
-<body x-data="productItem" class="bg-gray-200">
+<body x-data="productItem(1)" class="bg-gray-200">
   <header x-data="{mobileMenuOpen:false}" class="flex justify-between bg-slate-800 text-white px-4">
     <div class="py-navbar-item">
       <a href="/"> Logo </a>
@@ -359,10 +359,10 @@
       </div>
       <div class="flex items-center justify-between mb-3">
         <label for="">Quantity</label>
-        <input type="number" value="1" x-ref="quantityEl" x-model="quantity"
+        <input type="number" value="1" x-ref="quantityEl"
           class="bg-white rounded w-24 py-2 px-3 border border-gray-400 focus:border-purple-600 focus:ring-purple-600  focus:outline-none" />
       </div>
-      <button @click="addToCart(quantity)" class="flex justify-center items-center btn-primary w-full">
+      <button @click="addToCart(id,$refs.quantityEl.value)" class="flex justify-center items-center btn-primary w-full">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
           class="h-6 w-6 mr-2">
           <path stroke-linecap="round" stroke-linejoin="round"

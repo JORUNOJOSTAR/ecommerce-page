@@ -1,11 +1,14 @@
 document.addEventListener('alpine:init', () => {
 
-    Alpine.store("header", {
-        cartItems: Alpine.$persist(0),
+    Alpine.store("header", {        
+        cartItemsObject: Alpine.$persist({}),
         watchingItems: Alpine.$persist([]),
         get watchListItems() {
             return this.watchingItems.length;
         },
+        get cartItems(){
+            return Object.values(this.cartItemsObject).reduce((accum,next)=>accum + parseInt(next.quantity),0);
+        }
     })
 
     Alpine.data("toast",()=>({
@@ -20,7 +23,6 @@ document.addEventListener('alpine:init', () => {
                 clearInterval(this.interval);
             },
             show(message) {
-                console.log(message);
                 if (this.interval) {
                     clearInterval(this.interval);
                     this.interval = null;
@@ -50,30 +52,42 @@ document.addEventListener('alpine:init', () => {
         })
     );
 
-    Alpine.data('productItem', () =>({
-        quantity: 1,
-        addToWatchList(id) {
-            if (Alpine.store('header').watchingItems.includes(id)) {
-                Alpine.store('header').watchingItems.splice(Alpine.store('header').watchingItems.indexOf(id), 1);
+    Alpine.data('productItem', (product) =>{
+        return {
+            id: product.id,
+            product,
+            quantity: 1,
+            addToWatchList() {
+                if (Alpine.store('header').watchingItems.includes(this.id)) {
+                    Alpine.store('header').watchingItems.splice(Alpine.store('header').watchingItems.indexOf(this.id), 1);
+                    this.$dispatch('notify',{
+                        message: "The item was removed from your watchlist"
+                    })
+                } else {
+                    Alpine.store('header').watchingItems.push(this.id);
+                    this.$dispatch('notify',{
+                        message: 'The item was added into your watchlist'
+                    })
+                }
+            },
+            isInWatchList() {
+                return Alpine.store('header').watchingItems.includes(this.id);
+            },
+            addToCart(quantity = 1) {
+                Alpine.store('header').cartItemsObject[this.id] = Alpine.store('header').cartItemsObject[this.id] || {...product,quantity:0};
+                const currentAmount = parseInt(Alpine.store('header').cartItemsObject[this.id].quantity)
+                Alpine.store('header').cartItemsObject[this.id].quantity = parseInt(currentAmount) + quantity;
                 this.$dispatch('notify',{
-                    message: "The item was removed from your watchlist"
+                    message: 'The item was added into the cart'
                 })
-            } else {
-                Alpine.store('header').watchingItems.push(id);
+            },
+            removeItemFromCart(){
+                delete Alpine.store('header').cartItemsObject[this.id];
                 this.$dispatch('notify',{
-                    message: 'The item was added into your watchlist'
+                    message: 'The item was removed from cart'
                 })
             }
-        },
-        isInWatchList(id) {
-            return Alpine.store('header').watchingItems.includes(id);
-        },
-        addToCart(quantity = 1) {
-            Alpine.store('header').cartItems += parseInt(quantity);
-            this.$dispatch('notify',{
-                message: 'The item was added into the cart'
-            })
-        },
-    }))
+        }
+    })
 
 })
