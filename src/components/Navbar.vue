@@ -39,7 +39,7 @@
               </svg>
               Cart
             </div>
-            <small class="py-[2px] px-[8px] rounded-full bg-red-500" v-if="cartStore.cartItems">{{ cartStore.cartItems
+            <small class="py-[2px] px-[8px] rounded-full bg-red-500" v-if="cartStore.cartItemsCount">{{ cartStore.cartItemsCount
             }}</small>
           </RouterLink>
         </li>
@@ -165,7 +165,7 @@
             </svg>
             Cart
             <small class="z-20 absolute top-2 -right-1 py-[2px] px-[8px] rounded-full bg-red-500"
-              v-if="cartStore.cartItems">{{ cartStore.cartItems }}</small>
+              v-if="cartStore.cartItemsCount">{{ cartStore.cartItemsCount }}</small>
           </RouterLink>
         </li>
         <li class="relative" ref="desktopDropdownRef">

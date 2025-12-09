@@ -8,18 +8,19 @@ export const useWatchListStore = defineStore('watchlist',{
     getters:{
         watchListItems : (state) => state.watchList.length,
         isInWatchList  : (state) => (id) => {
-            return state.watchList.includes(id);
+            return state.watchList.find((p)=>p.id===id);
         }
     },
     actions: {
-        addToWatchList(id){
+        addToWatchList(product){
             const toastStore = useToastStore();
-            if(this.watchList.includes(id)){
-                this.watchList.splice(this.watchList.indexOf(id),1);
+            if(this.isInWatchList(product.id)){
+                const index = this.watchList.findIndex((p)=>p.id===product.id);
+                this.watchList.splice(index,1);
                 toastStore.show('The item was removed from watchlist');
                 return;
             }
-            this.watchList.push(id);
+            this.watchList.push(product);
             toastStore.show('The item was added into the watchlist');
         },
     }
