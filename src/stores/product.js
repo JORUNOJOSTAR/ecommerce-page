@@ -29,6 +29,11 @@ export const useProductStore = defineStore('product',{
                 },
             ];
             return products;
+        },
+        async getProductById(id){
+            return {
+                id: id,
+            };
         }
     }
 });

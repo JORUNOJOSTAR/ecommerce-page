@@ -70,7 +70,7 @@
                 <input type="number" v-model="quantity"
                     class="bg-white rounded w-24 py-2 px-3 border border-gray-400 focus:border-purple-600 focus:ring-purple-600  focus:outline-none" />
             </div>
-            <button @click="cartStore.addToCart(quantity)" class="flex justify-center items-center btn-primary w-full">
+            <button @click="cartStore.addToCart(product,quantity)" class="flex justify-center items-center btn-primary w-full">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="h-6 w-6 mr-2">
                     <path stroke-linecap="round" stroke-linejoin="round"
@@ -156,15 +156,24 @@
     <Toast/>
 </template>
 <script setup>
-import { computed, ref } from 'vue';
+import { computed, watch, ref } from 'vue';
 import { useCartStore } from '@/stores/cart';
+import { useProductStore } from '@/stores/product';
+import { useRoute } from 'vue-router';
 import Disclosure  from '@/components/Disclosure/Disclosure.vue';
 import DisclosureButton from '@/components/Disclosure/DisclosureButton.vue';
 import DisclosurePanel from '@/components/Disclosure/DisclosurePanel.vue';
 import Toast from '@/components/Toast.vue';
 
-const cartStore = useCartStore();
-const quantity  = ref(1);
+const cartStore    = useCartStore();
+const productStore = useProductStore();
+const quantity     = ref(1);
+
+const route        = useRoute();
+const product      = ref(null);
+watch(()=>route.params.id,async(newId)=>{
+    product.value = await productStore.getProductById(newId);
+},{ immediate:true });
 
 const imageData        = ref(['/src/img/1_1.jpg','/src/img/1_2.jpg','/src/img/1_3.jpg','/src/img/1_4.jpg']);
 const imagelength      = computed(()=>imageData.value.length);

@@ -4,12 +4,12 @@
         <div
             v-for="product in productList" :key="product.id"
             class="bg-white  rounded-md shadow border border-gray-300 hover:border-purple-600 transition-colors overflow-hidden">
-            <RouterLink :to="{ name: 'product' }">
+            <RouterLink :to="{ name: 'product',params: {id: product.id} }">
                 <img :src=product.image alt="" class="rounded-t-md hover:scale-105 transition hover:rotate-1 aspect-[3/2] object-cover">
             </RouterLink>
             <div class="p-3">
                 <h3>
-                    <RouterLink :to="{ name: 'product' }" class="hover:text-gray-800 text-black font-semibold">
+                    <RouterLink :to="{ name: 'product',params: {id: product.id} }" class="hover:text-gray-800 text-black font-semibold">
                         {{ product.title }}
                     </RouterLink>
                 </h3>
@@ -40,7 +40,7 @@
     <Toast/>
 </template>
 <script setup>
-import { ref, computed, watch } from 'vue';
+import { ref, watch } from 'vue';
 import { useCartStore } from '@/stores/cart';
 import { useWatchListStore } from '@/stores/watchlist';
 import { useProductStore } from '@/stores/product';
