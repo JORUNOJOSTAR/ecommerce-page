@@ -261,10 +261,12 @@
   </header>
 </template>
 <script setup>
-import { ref } from "vue";
+import { ref,watch } from "vue";
+import { useRoute } from 'vue-router';
 import { useCartStore } from "@/stores/cart";
 import { useWatchListStore } from "@/stores/watchlist";
 import userClickOutside from "@/composables/userClickOutside";
+const route               = useRoute();
 const moblieMenuOpen      = ref(false);
 const moblieDropDownOpen  = ref(false);
 const desktopDropDownOpen = ref(false);
@@ -275,6 +277,7 @@ const hamburgerMenuRef    = ref(null);
 const cartStore           = useCartStore();
 const watchlistStore      = useWatchListStore();
 
+// Close the menu if clicking outside of menu
 userClickOutside(mobileDropdownRef , () => { moblieDropDownOpen.value  = false; });
 userClickOutside(desktopDropdownRef, () => { desktopDropDownOpen.value = false; });
 userClickOutside(mobileMenuRef, (targetEvent) => {
@@ -283,5 +286,12 @@ userClickOutside(mobileMenuRef, (targetEvent) => {
         moblieMenuOpen.value = false;
   }
 });
+
+//Close the menu if route changes
+watch(() => route.path, () => {
+  moblieMenuOpen.value      = false;
+  moblieDropDownOpen.value  = false;
+  desktopDropDownOpen.value = false;
+})
 
 </script>
