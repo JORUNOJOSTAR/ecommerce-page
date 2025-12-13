@@ -14,14 +14,21 @@ export const useWatchListStore = defineStore('watchlist',{
     actions: {
         addToWatchList(product){
             const toastStore = useToastStore();
-            if(this.isInWatchList(product.id)){
-                const index = this.watchList.findIndex((p)=>p.id===product.id);
-                this.watchList.splice(index,1);
+            if(this.removeFromWatchList(product.id)){
                 toastStore.show('The item was removed from watchlist');
                 return;
             }
             this.watchList.push(product);
             toastStore.show('The item was added into the watchlist');
         },
+        removeFromWatchList(id){
+            let isRemove = false;
+            if(this.isInWatchList(id)){
+                const index = this.watchList.findIndex((p)=>p.id===id);
+                this.watchList.splice(index,1);
+                isRemove = true;
+            }
+            return isRemove;
+        }
     }
 })

@@ -6,7 +6,7 @@
                 <div v-for="product in cartStore.cartItems" class="p-2">
                     <!-- Cart Item -->
                     <div class="flex flex-col sm:flex-row items-center gap-4">
-                        <img src="/src/img/1_1.jpg" class="w-36 aspect-[3/2] object-cover" alt="">
+                        <img :src="product.image" class="w-36 aspect-[3/2] object-cover" alt="">
                         <div class="flex flex-col justify-between flex-1">
                             <div class="flex justify-between mb-3">
                                 <h3>
@@ -38,7 +38,7 @@
                     <hr class="my-3">
                 
                 </div>
-                <div class="border-gray-300 mt-5 pt-5">
+                <div class="border-gray-300  pt-5">
                     <div class="flex justify-between">
                         <span class="font-bold">Subtotal</span>
                         <span>{{ cartStore.totalPrice }}</span>
