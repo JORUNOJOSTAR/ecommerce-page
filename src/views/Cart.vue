@@ -1,152 +1,70 @@
 <template>
     <div class="container lg:w-2/3 mx-auto p-5">
-        <h1 class="text-3xl font-bold m-2">My Cart Items</h1>
+        <h1 class="text-3xl font-bold m-2 mb-5">My Cart Items</h1>
         <div class="bg-white rounded-lg p-3">
-            <div>
-                <!-- Cart Item -->
-                <div class="flex flex-col sm:flex-row items-center gap-4">
-                    <img src="/src/img/1_1.jpg" class="w-36" alt="">
-                    <div class="flex flex-col justify-between">
-                        <div class="flex justify-between mb-3">
-                            <h3>
-                                It has roots in a piece of classical Latin literature from 45 BC,
-                                making it over 2000 years old
-                            </h3>
-                            <span class="text-lg font-semibold">
-                                $17.99
-                            </span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center">
-                                Qty:
-                                <select name="" id=""
-                                    class="border border-gray-200 focus:border-purple-600  focus:ring-purple-600 ml-3 py-1">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                </select>
+            <div v-if="cartStore.cartItemsCount > 0">
+                <div v-for="product in cartStore.cartItems" class="p-2">
+                    <!-- Cart Item -->
+                    <div class="flex flex-col sm:flex-row items-center gap-4">
+                        <img src="/src/img/1_1.jpg" class="w-36 aspect-[3/2] object-cover" alt="">
+                        <div class="flex flex-col justify-between flex-1">
+                            <div class="flex justify-between mb-3">
+                                <h3>
+                                    {{ product.title }}
+                                </h3>
+                                <span class="text-lg font-semibold">
+                                    {{ product.price }}
+                                </span>
                             </div>
-                            <RouterLink to="#" class="text-purple-600 hover:text-purple-500">Remove</RouterLink>
+                            <div class="flex justify-between items-center">
+                                <div class="flex items-center">
+                                    Qty:
+                                    <select name="" id="" v-model.number="product.quantity"
+                                        class="border border-gray-200 focus:border-purple-600  focus:ring-purple-600 ml-3 py-1">
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5</option>
+                                        <option value="6">6</option>
+                                        <option value="7">7</option>
+                                    </select>
+                                </div>
+                                <button @click="cartStore.removeFromCart(product.id)" class="text-purple-600 hover:text-purple-500">Remove</button>
+                            </div>
                         </div>
                     </div>
+                    <!-- Cart Item -->
+                    <hr class="my-3">
+                
                 </div>
-                <!-- Cart Item -->
-                <hr class="my-3">
-                <!-- Cart Item -->
-                <div class="flex flex-col sm:flex-row items-center gap-4">
-                    <img src="/src/img/1_2.jpg" class="w-36" alt="">
-                    <div class="flex flex-col justify-between">
-                        <div class="flex justify-between mb-3">
-                            <h3>
-                                It has roots in a piece of classical Latin literature from 45 BC,
-                                making it over 2000 years old
-                            </h3>
-                            <span class="text-lg font-semibold">
-                                $17.99
-                            </span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center">
-                                Qty:
-                                <select name="" id=""
-                                    class="border border-gray-200 focus:border-purple-600  focus:ring-purple-600 ml-3 py-1">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                </select>
-                            </div>
-                            <RouterLink to="#" class="text-purple-600 hover:text-purple-500">Remove</RouterLink>
-                        </div>
+                <div class="border-gray-300 mt-5 pt-5">
+                    <div class="flex justify-between">
+                        <span class="font-bold">Subtotal</span>
+                        <span>{{ cartStore.totalPrice }}</span>
                     </div>
+                    <p>
+                        Shipping and tax will be applied on checkout
+                    </p>
+                    <button class="btn-primary w-full mt-3">Checkout</button>
                 </div>
-                <!-- Cart Item -->
-                <hr class="my-3">
-                <!-- Cart Item -->
-                <div class="flex flex-col sm:flex-row items-center gap-4">
-                    <img src="/src/img/1_3.jpg" class="w-36" alt="">
-                    <div class="flex flex-col justify-between">
-                        <div class="flex justify-between mb-3">
-                            <h3>
-                                It has roots in a piece of classical Latin literature from 45 BC,
-                                making it over 2000 years old
-                            </h3>
-                            <span class="text-lg font-semibold">
-                                $17.99
-                            </span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center">
-                                Qty:
-                                <select name="" id=""
-                                    class="border border-gray-200 focus:border-purple-600  focus:ring-purple-600 ml-3 py-1">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                </select>
-                            </div>
-                            <RouterLink to="#" class="text-purple-600 hover:text-purple-500">Remove</RouterLink>
-                        </div>
-                    </div>
-                </div>
-                <!-- Cart Item -->
-                <hr class="my-3">
-                <!-- Cart Item -->
-                <div class="flex flex-col sm:flex-row items-center gap-4">
-                    <img src="/src/img/1_1.jpg" class="w-36" alt="">
-                    <div class="flex flex-col justify-between">
-                        <div class="flex justify-between mb-3">
-                            <h3>
-                                It has roots in a piece of classical Latin literature from 45 BC,
-                                making it over 2000 years old
-                            </h3>
-                            <span class="text-lg font-semibold">
-                                $17.99
-                            </span>
-                        </div>
-                        <div class="flex justify-between items-center">
-                            <div class="flex items-center">
-                                Qty:
-                                <select name="" id=""
-                                    class="border border-gray-200 focus:border-purple-600  focus:ring-purple-600 ml-3 py-1">
-                                    <option value="1">1</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5</option>
-                                    <option value="6">6</option>
-                                    <option value="7">7</option>
-                                </select>
-                            </div>
-                            <RouterLink to="#" class="text-purple-600 hover:text-purple-500">Remove</RouterLink>
-                        </div>
-                    </div>
-                </div>
-                <!-- Cart Item -->
             </div>
-            <div class="border-t border-gray-300 mt-5 pt-5">
-                <div class="flex justify-between">
-                    <span class="font-bold">Subtotal</span>
-                    <span>$165.99</span>
-                </div>
-                <p>
-                    Shipping and tax will be applied on checkout
-                </p>
-                <button class="btn-primary w-full mt-3">Checkout</button>
+            <div v-else class="text-center py-16">
+                <svg class="mx-auto h-24 w-24 text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                </svg>
+                <h3 class="mt-6 text-xl font-semibold text-gray-900">Your cart is empty</h3>
+                <p class="mt-2 text-gray-500">Start adding some products to your cart!</p>
+                <router-link to="/" class="inline-block mt-6 btn-primary">
+                    Continue Shopping
+                </router-link>
             </div>
         </div>
 
     </div>
 </template>
-<script setup></script>
+<script setup>
+import { useCartStore } from '@/stores/cart';
+
+const cartStore = useCartStore();
+</script>
