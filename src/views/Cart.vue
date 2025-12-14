@@ -19,16 +19,7 @@
                             <div class="flex justify-between items-center">
                                 <div class="flex items-center">
                                     Qty:
-                                    <select name="" id="" v-model.number="product.quantity"
-                                        class="border border-gray-200 focus:border-purple-600  focus:ring-purple-600 ml-3 py-1">
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5</option>
-                                        <option value="6">6</option>
-                                        <option value="7">7</option>
-                                    </select>
+                                    <input type="number" v-model.number="product.quantity" class="w-16 border border-gray-200 focus:border-purple-600  focus:ring-purple-600 ml-3 py-1"/>
                                 </div>
                                 <button @click="cartStore.removeFromCart(product.id)" class="text-purple-600 hover:text-purple-500">Remove</button>
                             </div>

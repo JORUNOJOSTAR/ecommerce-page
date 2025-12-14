@@ -1,6 +1,5 @@
 <template>
     <div class="container lg:w-2/3 mx-auto p-5 ">
-
         <h1 class="text-3xl font-bold m-2">My Orders</h1>
         <div class="bg-white rounded-lg p-3 overflow-x-auto">
             <table class="table-auto w-full">
@@ -25,22 +24,19 @@
                         </td>
                         <td class="p-2">
                             <span class="bg-gray-400 py-1 px-2 rounded text-white">Unpaid</span>
-                            <!-- <span class="bg-orange-400 py-1 px-2 rounded text-white">Pending</span>
-                <span class="bg-red-400 py-1 px-2 rounded text-white">Unpaid</span>
-                <span class="bg-emerald-400 py-1 px-2 rounded text-white">Paid</span> -->
                         </td>
                         <td class="p-2">
                             $174.99
                         </td>
                         <td class="flex gap-2 w-[200px] p-2">
-                            <RouterLink to="#" class="flex items-center  btn-emerald whitespace-nowrap">
+                            <button ref="invoiceButtonRef" @click="openModal" class="flex items-center  btn-emerald whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-5">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
                                 </svg>
-                                View Invoice
-                            </RouterLink>
+                                Invoice
+                            </button>
                             <RouterLink to="#" class="flex items-center btn-primary whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -62,22 +58,19 @@
                         </td>
                         <td class="p-2">
                             <span class="bg-gray-400 py-1 px-2 rounded text-white">Unpaid</span>
-                            <!-- <span class="bg-orange-400 py-1 px-2 rounded text-white">Pending</span>
-                <span class="bg-red-400 py-1 px-2 rounded text-white">Unpaid</span>
-                <span class="bg-emerald-400 py-1 px-2 rounded text-white">Paid</span> -->
                         </td>
                         <td class="p-2">
                             $174.99
                         </td>
                         <td class="flex gap-2 w-[200px] p-2">
-                            <RouterLink to="#" class="flex items-center  btn-emerald whitespace-nowrap">
+                            <button class="flex items-center  btn-emerald whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-5">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
                                 </svg>
-                                View Invoice
-                            </RouterLink>
+                                Invoice
+                            </button>
                             <RouterLink to="#" class="flex items-center btn-primary whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -104,14 +97,14 @@
                             $174.99
                         </td>
                         <td class="flex gap-2 w-[200px] p-2">
-                            <RouterLink to="#" class="flex items-center  btn-emerald whitespace-nowrap">
+                            <button class="flex items-center  btn-emerald whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-5">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
                                 </svg>
-                                View Invoice
-                            </RouterLink>
+                                Invoice
+                            </button>
                             <RouterLink to="#" class="flex items-center btn-primary whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -138,14 +131,14 @@
                             $174.99
                         </td>
                         <td class="flex gap-2 w-[200px] p-2">
-                            <RouterLink to="#" class="flex items-center  btn-emerald whitespace-nowrap">
+                            <button class="flex items-center  btn-emerald whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-5">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
                                 </svg>
-                                View Invoice
-                            </RouterLink>
+                                Invoice
+                            </button>
                             <RouterLink to="#" class="flex items-center btn-primary whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -172,14 +165,14 @@
                             $174.99
                         </td>
                         <td class="flex gap-2 w-[200px] p-2">
-                            <RouterLink to="#" class="flex items-center  btn-emerald whitespace-nowrap">
+                            <button class="flex items-center  btn-emerald whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-5">
                                     <path stroke-linecap="round" stroke-linejoin="round"
                                         d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
                                 </svg>
-                                View Invoice
-                            </RouterLink>
+                                Invoice
+                            </button>
                             <RouterLink to="#" class="flex items-center btn-primary whitespace-nowrap">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="size-5">
@@ -192,9 +185,56 @@
                     </tr>
 
                 </tbody>
+                
             </table>
         </div>
-
+        <Teleport to="body">
+            <div v-if="isModalOpen" class="fixed flex justify-center items-center left-0 top-0 bottom-0 right-0 z-99 bg-black/50">
+                <!-- Modal -->
+                <div ref="modalRef" class="w-[90%] md:w-1/2 bg-white rounded-lg">
+                    <!-- Modal Title -->
+                    <div
+                      class="py-2 px-4 text-lg font-semibold bg-gray-100 rounded-t-lg flex items-center justify-between">
+                      <h2>Modal Title</h2>
+                      <button @click="closeModal" class="cursor-pointer">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                      </button>
+                    </div>
+                    <!-- Modal Content -->
+                    <div class="p-4">Inovice Content</div>
+                    <!-- Modal Footer -->
+                    <div class="py-2 px-4 text-lg flex justify-end font-semibold bg-gray-100 rounded-b-lg">
+                        <button @click="closeModal" class="cursor-pointer inline-flex items-center py-1 px-3 bg-gray-300 hover:bg-opacity-95 text-gray-800 rounded-md shadow">
+                            Close
+                        </button>
+                    </div>
+                </div>            
+            </div>
+        </Teleport>
     </div>
 </template>
-<script setup></script>
+<script setup>
+import { ref } from 'vue';
+import userClickOutside from '@/composables/userClickOutside';
+
+const isModalOpen      = ref(false);
+const modalRef         = ref(null);
+const invoiceButtonRef = ref(null);
+
+userClickOutside(modalRef,(targetEvent)=>{
+    if(invoiceButtonRef.value && !invoiceButtonRef.value.contains(targetEvent)){
+        closeModal();
+    }
+});
+
+function openModal(){
+    isModalOpen.value = true;
+}
+
+function closeModal(){
+    isModalOpen.value = false;
+}
+</script>
