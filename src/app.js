@@ -81,7 +81,7 @@ document.addEventListener('alpine:init', () => {
             addToCart(quantity = 1) {
                 Alpine.store('header').cartItemsObject[this.id] = Alpine.store('header').cartItemsObject[this.id] || { ...product, quantity: 0 };
                 const currentAmount = parseInt(Alpine.store('header').cartItemsObject[this.id].quantity)
-                Alpine.store('header').cartItemsObject[this.id].quantity = parseInt(currentAmount) + quantity;
+                Alpine.store('header').cartItemsObject[this.id].quantity = parseInt(currentAmount) + parseInt(quantity);
                 this.$dispatch('notify', {
                     message: 'The item was added into the cart'
                 })
